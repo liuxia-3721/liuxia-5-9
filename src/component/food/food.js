@@ -1,32 +1,23 @@
 import React from "react"
+import Store from "../store/store"
+import {observer} from "mobx-react"
 
-export default class Food extends React.Component{
-    constructor(){
-        super()
-        this.state={
-            x:3,
-            y:5
-        }
-    }
+@observer
+class Food extends React.Component{
     render(){
         return(
             <div style={{
                 width:"40px",height:"40px",background:"red",position:"absolute",
-                left:`${this.state.x * 40}px `,
-                top:`${this.state.y * 40}px `,
+                left:`${Store.obj.x*40}px`,
+                right:`${Store.obj.y*40}px`
             }} ref="food">
             </div>
         )
     }
     componentDidMount(){
-
-        setInterval(()=>{
-            this.setState({
-                x:Math.round(Math.random()*19),
-                y:Math.round(Math.random()*9)
-            })
-        },1000)
-        // this.refs.food.style.left=this.state.x  *  this.refs.food.offsetWidth + "px"
-        // this.refs.food.style.top=this.state.y  *  this.refs.food.offsetWidth + "px"
+        Store.random()
+        this.refs.food.style.left=Store.obj.x  *  this.refs.food.offsetWidth + "px"
+        this.refs.food.style.top=Store.obj.y  *  this.refs.food.offsetWidth + "px"
     }
 }
+export default Food 
