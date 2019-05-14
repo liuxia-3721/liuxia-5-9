@@ -9,7 +9,7 @@ class Food extends React.Component{
             <div style={{
                 width:"40px",height:"40px",background:"red",position:"absolute",
                 left:`${Store.obj.x*40}px`,
-                right:`${Store.obj.y*40}px`
+                top:`${Store.obj.y*40}px`
             }} ref="food">
             </div>
         )

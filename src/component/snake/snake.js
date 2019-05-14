@@ -6,13 +6,13 @@ class Snake extends React.Component{
     render(){
         return (
             <>
-                <div className="snake" ref="map">
-                {Store.testing&&document.write("gg")}
+                <div className="snake" ref="map" style={{background:"red"}}>
+                    {Store.testing&&document.write("gg")}
                 </div>
             </>
         )
     }
-    fun(){
+    fun(){                                  //创建蛇
         for(var i=0;i<Store.arr.length;i++){
             if(!Store.arr[i].ele){
                 Store.arr[i].ele=document.createElement("div");
@@ -28,14 +28,11 @@ class Snake extends React.Component{
         setTimeout(function(){
         Store.move() ;  
         this.fun()  ;
-        if(Store.add){
-            // console.log(console.log(Store.obj.x))
-            console.log(Store.a)
+        if(!Store.a){
+            // console.log("缓缓")
             Store.random()
             Store.add2()
-            console.log(Store.a)
-            // console.log(console.log(Store.obj.x))
-            
+            Store.add3()
         } 
         }.bind(this),200)
     }
@@ -47,9 +44,6 @@ class Snake extends React.Component{
             Store.change(c)
         }
 
-        // setTimeout(function(){
-        //     this.fun()   
-        // }.bind(this),800)
     }
 }
 export default  Snake
